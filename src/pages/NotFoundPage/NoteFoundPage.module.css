@@ -1,0 +1,42 @@
+.div {
+    margin-top: 50px;
+    text-align: center;
+
+}
+
+.title {
+    color: #871d1d;
+    margin-bottom: 10px;
+}
+
+.text {
+    color: #871d1d;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.btn {
+    border-radius: 12px;
+    padding: 12px 95px;
+    width: 370px;
+    height: 44px;
+    background: #F4C550;
+    border: none;
+    display: flex;
+    align-items: center;
+    margin: 0 auto;
+
+    font-family: var(--font-family);
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 156%;
+    color: #121417;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+
+.btn:hover,
+.btn:focus {
+    background-color: #F4C550;
+}
