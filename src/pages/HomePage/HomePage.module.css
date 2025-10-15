@@ -79,6 +79,10 @@
   cursor: pointer;
 }
 
+.btn:hover {
+  background: #ffdc86;
+}
+
 .container {
   border-radius: 30px;
   width: 568px;

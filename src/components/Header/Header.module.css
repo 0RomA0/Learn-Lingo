@@ -1,38 +1,114 @@
 .header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: 1px solid #f2f4f7;
-    padding: 16px 120px;
-    background: #f2f4f7;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 64px 0;
+  max-width: 1440px;
+}
 
+.navContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: auto;
+  gap: 268px;
+}
+
+.leftSlide {
+  display: flex;
+  align-items: center;
+  height: 28px;
+  gap: 390px;
 }
 
 .logo {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.textHeader {
+  font-family: var(--font-family);
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 120%;
+  letter-spacing: -0.02em;
+  color: #121417;
 }
 
 .nav {
-    display: flex;
-    gap: 32px;
-    font-family: "Manrope", sans-serif;
-    font-weight: 500;
-    font-size: 16px;
-    line-height: 125%;
+  display: flex;
+  gap: 28px;
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 125%;
+  color: #121417;
 }
 
 .link {
-    color: #101828;
-    text-decoration: none;
-    transition: color 0.3s;
+  color: #101828;
+  text-decoration: none;
+  transition: color 0.3s;
 }
 
 .link:hover {
-    color: #4b80fb;
-    ;
+  color: #f4c550;
 }
 
 .active {
-    color: #0b44cd;
+  color: #f4c550;
+}
+
+.btnContainer {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+.iconLogIn {
+  stroke: #f4c550;
+  fill: none;
+  margin-right: 8px;
+}
+
+.btnLogIn {
+  border: none;
+  background-color: transparent;
+  padding: 0;
+
+  font-family: var(--font-family);
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 125%;
+  color: #121417;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.btnLogIn:focus {
+  outline: none; /* прибирає обводку */
+}
+
+.btnRegistration {
+  border-radius: 12px;
+  padding: 14px 39px;
+  width: 166px;
+  height: 48px;
+  background: #121417;
+
+  font-family: var(--font-family);
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 125%;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+.btnRegistration:hover {
+  background: #65696f;
 }

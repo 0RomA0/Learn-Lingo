@@ -1,0 +1,163 @@
+.backdrop {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+}
+
+.modal {
+  position: relative;
+  background: #fff;
+  border-radius: 30px;
+  width: 565px;
+  height: auto;
+  padding: 64px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  animation: appear 0.2s ease-in-out;
+}
+
+@keyframes appear {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.closeBtn {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+.closeIcon {
+  stroke: #121417;
+  transition: stroke 0.3s;
+}
+
+.closeIcon:hover {
+  stroke: #f4c550;
+}
+
+.title {
+  font-family: var(--font-family);
+  font-weight: 500;
+  font-size: 40px;
+  line-height: 120%;
+  letter-spacing: -0.02em;
+  color: #121417;
+  margin-bottom: 20px;
+}
+
+.description {
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 137%;
+  color: rgba(18, 20, 23, 0.8);
+  margin-bottom: 40px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+}
+
+.inputGap {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.inputContainer {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.inputEmail {
+  border: 1px solid rgba(18, 20, 23, 0.1);
+  border-radius: 12px;
+  padding: 16px 0 16px 18px;
+  width: 438px;
+  height: 54px;
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 137%;
+  color: #121417;
+}
+
+.inputEmail:focus {
+  border-color: #f4c550;
+  outline: none;
+}
+
+.inputPassword:focus {
+  border-color: #f4c550;
+  outline: none;
+}
+
+.inputPassword {
+  border: 1px solid rgba(18, 20, 23, 0.1);
+  border-radius: 12px;
+  padding: 16px 0 16px 18px;
+  width: 438px;
+  height: 54px;
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 137%;
+  color: #121417;
+}
+
+.btn {
+  padding: 16px 180px;
+  margin-top: 40px;
+  border-radius: 12px;
+  width: 438px;
+  height: 60px;
+  border: none;
+  cursor: pointer;
+  background: #f4c550;
+  font-family: var(--font-family);
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 156%;
+  color: #121417;
+}
+
+.btn:hover {
+  background: #ffdc86;
+}
+
+.eyeBtn {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+.eyeIcon {
+  fill: none;
+  stroke-width: 2px;
+  stroke: #121417;
+}
+
+.error {
+  color: red;
+  font-size: 13px;
+  margin-top: 4px;
+  position: relative;
+}

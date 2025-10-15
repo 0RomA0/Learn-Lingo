@@ -31,6 +31,7 @@ export default function HomePage() {
           />
         </div>
 
+        
         <div className={style.infoContainer}>
           {/* SVG рамка з рисками */}
           <svg
