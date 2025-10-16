@@ -1,0 +1,175 @@
+.container {
+  background: #f8f8f8;
+  padding: 96px 128px;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  width: 100%;
+  height: 1048px;
+}
+
+.item {
+  border-radius: 24px;
+  padding: 24px;
+  width: 1184px;
+  height: 328px;
+  background: #fff;
+  display: flex;
+}
+
+.divContainer {
+  display: flex;
+  flex-direction: column;
+  margin-left: 48px;
+  gap: 32px;
+}
+
+.infoText {
+  display: flex;
+  align-items: center;
+  width: 607px;
+  height: 24px;
+  margin-right: 64px;
+}
+
+.textContainer {
+  display: flex;
+}
+
+.divider {
+  width: 1px;
+  height: 16px;
+  stroke-width: 1px;
+  background-color: rgba(18, 20, 23, 0.2);
+  margin: 4px 16px;
+}
+.div {
+  margin-right: 149px;
+}
+
+.textLang {
+  font-family: var(--font-family);
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 150%;
+  color: #8a8a89;
+}
+
+.title {
+  font-family: var(--font-family);
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 100%;
+  color: #121417;
+}
+
+.bookDiv {
+  display: flex;
+}
+
+.onlineText {
+  font-family: var(--font-family);
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 150%;
+  color: #121417;
+  line-height: 1;
+}
+
+.bookSvg {
+  stroke-width: 1.5px;
+  stroke: #000;
+  width: 16px;
+  height: 16px;
+  margin-right: 8px;
+  fill: none;
+  flex-shrink: 0;
+}
+
+.textLesson {
+  font-family: var(--font-family);
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 150%;
+  color: #121417;
+}
+
+.spanPrice {
+  color: #38cd3e;
+}
+
+.heartBtn {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.svgHeart {
+  width: 25px;
+  height: 22px;
+  stroke-width: 2px;
+  stroke: #121417;
+  fill: none;
+}
+
+.label {
+  font-family: var(--font-family);
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 150%;
+  color: #8a8a89;
+  margin-right: 4px;
+}
+
+.details {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.detailsItem {
+  font-family: var(--font-family);
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 150%;
+
+  color: #121417;
+}
+
+.underlined {
+  text-decoration: underline;
+  text-decoration-skip-ink: none;
+}
+
+.imgBorder {
+  border: 3px solid #fbe9ba;
+  border-radius: 100px;
+  width: 120px;
+  height: 120px;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.image {
+  border-radius: 100px;
+  width: 96px;
+  height: 96px;
+  position: absolute;
+}
+
+.statusSvg {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  width: 12px;
+  height: 12px;
+  background: #fff;
+  border-radius: 50%;
+  pointer-events: none;
+}

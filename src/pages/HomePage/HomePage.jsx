@@ -1,4 +1,5 @@
-import style from "./HomePage.module.css";
+import { NavLink } from 'react-router-dom';
+import style from './HomePage.module.css';
 
 export default function HomePage() {
   return (
@@ -6,32 +7,30 @@ export default function HomePage() {
       <div className={style.sectionContainer}>
         <div className={style.textContainer}>
           <h1 className={style.article}>
-            {" "}
-            Unlock your potential with the best{" "}
-            <span className={style.span}>language</span> tutors{" "}
+            {' '}
+            Unlock your potential with the best{' '}
+            <span className={style.span}>language</span> tutors{' '}
           </h1>
           <p className={style.text}>
             Embark on an Exciting Language Journey with Expert Language Tutors:
             Elevate your language proficiency to new heights by connecting with
             highly qualified and experienced tutors.
           </p>
-          <button className={style.btn}> Get started </button>
+          <NavLink to={'/teachers'} className={style.btn}>
+            Get started
+          </NavLink>
         </div>
 
         <div className={style.container}>
-          <img
-            className={style.imgFace}
-            src="../../../public/68e4226188648a055ee1b42bed644f46-sticker 1.png"
-            alt="sticker"
-          />
-          <img
-            className={style.imgImac}
-            src="../../../public/iMac.png"
-            alt="Mac"
-          />
+          <svg className={style.imgFace} width="339" height="339">
+            <use href="../../../sticker.svg" />
+          </svg>
+
+          <svg className={style.imgImac} width="359" height="247">
+            <use href="../../../iMac.svg" />
+          </svg>
         </div>
 
-        
         <div className={style.infoContainer}>
           {/* SVG рамка з рисками */}
           <svg
