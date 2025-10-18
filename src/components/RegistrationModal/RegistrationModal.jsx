@@ -3,13 +3,15 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as Yup from 'yup';
 import style from './RegistrationModal.module.css';
-import { registerUser } from '../../services/auth';
+import { registerUser } from '../../redux/auth/operations';
 import toast from 'react-hot-toast';
+import { useDispatch } from 'react-redux';
 
 export default function RegistrationModal({ onClose }) {
   const [eyeOpen, setEyeOpen] = useState(false);
   const [firebaseError, setFirebaseError] = useState('');
   const [loading, setLoading] = useState(false);
+  const dispatch = useDispatch();
 
   const RegistrationSchema = Yup.object().shape({
     name: Yup.string()
@@ -47,7 +49,7 @@ export default function RegistrationModal({ onClose }) {
     setLoading(true);
 
     try {
-      await registerUser(data.name, data.email, data.password);
+      await dispatch(registerUser(data)).unwrap();
       toast.success('Registration was successful!');
       reset();
       onClose();

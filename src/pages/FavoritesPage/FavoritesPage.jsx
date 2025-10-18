@@ -1,25 +1,21 @@
 import { useEffect } from 'react';
-import style from './TeachersPage.module.css';
+import style from './FavoritesPage.module.css';
 import { fetchTeachers } from '../../redux/teachers/operations';
 import { useDispatch, useSelector } from 'react-redux';
 import { toggleFavorite } from '../../redux/favorites/slice';
 import { selectFavorites } from '../../redux/favorites/selectors';
 import {
-  selectHasMore,
   selectLastKey,
   selectLoading,
   selectTeachers,
 } from '../../redux/teachers/selectors';
-import { selectIsLoggedIn } from '../../redux/auth/selectors';
-import toast from 'react-hot-toast';
 
-export default function TeachersPage() {
+export default function FavoritesPage() {
   const teachers = useSelector(selectTeachers);
   const loading = useSelector(selectLoading);
   const lastKey = useSelector(selectLastKey);
   const favorites = useSelector(selectFavorites);
-  const hasMore = useSelector(selectHasMore);
-  const loggedIn = useSelector(selectIsLoggedIn);
+
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -34,10 +30,21 @@ export default function TeachersPage() {
 
   if (loading && teachers.length === 0) return <p>Loading teachers...</p>;
 
+  const favoriteTeachers = teachers.filter((t) => favorites.includes(t.id));
+
+  const showLoadMore = favoriteTeachers.length < favorites.length && !loading;
+
+  if (favoriteTeachers.length === 0) {
+    return <p className={style.emptyText}>No favorite teachers yet 💔</p>;
+  }
+
+  if (loading && teachers.length === 0)
+    return <p>Loading favorites teachers...</p>;
+
   return (
     <div className={style.container}>
       <ul className={style.list}>
-        {teachers.map((teacher) => {
+        {favoriteTeachers.map((teacher) => {
           const isFavorite = favorites.includes(teacher.id);
           return (
             <li className={style.item} key={teacher.id}>
@@ -84,25 +91,12 @@ export default function TeachersPage() {
 
                   <button
                     className={style.heartBtn}
-                    onClick={() => {
-                      if (!loggedIn) {
-                        toast(
-                          'This feature is available only for authorized users.',
-                          {
-                            icon: 'ℹ',
-                          },
-                        );
-                        return;
-                      }
-                      dispatch(toggleFavorite(teacher.id));
-                    }}
+                    onClick={() => dispatch(toggleFavorite(teacher.id))}
                   >
                     <svg className={style.svgHeart}>
                       <use
                         href={`/sprite.svg#${
-                          isFavorite && loggedIn
-                            ? 'icon-color-heart'
-                            : 'icon-heart'
+                          isFavorite ? 'icon-color-heart' : 'icon-heart'
                         }`}
                       />
                     </svg>
@@ -131,7 +125,7 @@ export default function TeachersPage() {
         })}
       </ul>
 
-      {hasMore && !loading && (
+      {showLoadMore && (
         <button onClick={handleLoadMore} className={style.loadMoreBtn}>
           Load more
         </button>

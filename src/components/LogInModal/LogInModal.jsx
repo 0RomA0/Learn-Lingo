@@ -3,13 +3,15 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as Yup from 'yup';
 import style from './LoginModal.module.css';
-import { logInUser } from '../../services/auth';
+import { logInUser } from '../../redux/auth/operations';
 import toast from 'react-hot-toast';
+import { useDispatch } from 'react-redux';
 
 export default function LoginModal({ onClose }) {
   const [eyeOpen, setEyeOpen] = useState(false);
   const [firebaseError, setFirebaseError] = useState('');
   const [loading, setLoading] = useState(false);
+  const dispatch = useDispatch();
 
   const LogInSchema = Yup.object().shape({
     email: Yup.string()
@@ -43,7 +45,7 @@ export default function LoginModal({ onClose }) {
     setLoading(true);
 
     try {
-      await logInUser(data.email, data.password);
+      await dispatch(logInUser(data)).unwrap();
       toast.success('Log in was successful!');
       reset();
       onClose();
