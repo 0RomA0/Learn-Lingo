@@ -1,0 +1,212 @@
+.backdrop {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+}
+
+.modal {
+  background: #fff;
+  border-radius: 30px;
+  width: 90%;
+  max-width: 599px;
+  max-height: 90vh;
+  overflow-y: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  padding: 64px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  position: relative;
+}
+
+.modal::-webkit-scrollbar {
+  display: none;
+}
+
+@keyframes appear {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.closeBtn {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+.closeIcon {
+  stroke: #121417;
+  transition: stroke 0.3s;
+}
+
+.closeIcon:hover {
+  stroke: #f4c550;
+}
+
+.title {
+  font-family: var(--font-family);
+  font-weight: 500;
+  font-size: 40px;
+  line-height: 120%;
+  letter-spacing: -0.02em;
+  color: #121417;
+  margin-bottom: 20px;
+}
+
+.description {
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 137%;
+  color: rgba(18, 20, 23, 0.8);
+  margin-bottom: 20px;
+}
+
+.containerInfo {
+  display: flex;
+  gap: 14px;
+  margin-bottom: 40px;
+}
+
+.image {
+  border-radius: 100px;
+  width: 44px;
+  height: 44px;
+}
+
+.divName {
+  display: flex;
+  flex-direction: column;
+}
+
+.textLang {
+  font-family: var(--font-family);
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 133%;
+  color: #8a8a89;
+}
+
+.titleName {
+  font-family: var(--font-family);
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 150%;
+  color: #121417;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  border-radius: 30px;
+  width: 472px;
+  height: auto;
+}
+
+.radioTitle {
+  font-family: var(--font-family);
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 133%;
+  color: #121417;
+  margin-bottom: 20px;
+}
+
+.radioGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 40px;
+}
+
+.radioLabel {
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 137%;
+  text-align: center;
+  color: #121417;
+  display: flex;
+  gap: 8px;
+}
+
+.inputRadio {
+  display: flex;
+  accent-color: #f4c550;
+  cursor: pointer;
+  border-radius: 12px;
+  width: 24px;
+  height: 24px;
+}
+
+.inputGap {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.inputContainer {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.inputName,
+.inputEmail,
+.inputPhone {
+  border: 1px solid rgba(18, 20, 23, 0.1);
+  border-radius: 12px;
+  padding: 16px 0 16px 18px;
+  width: 472px;
+  height: 54px;
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 137%;
+  color: #121417;
+}
+
+.inputName:focus,
+.inputEmail:focus,
+.inputPhone:focus {
+  border-color: #f4c550;
+  outline: none;
+}
+
+.btn {
+  margin-top: 40px;
+  border-radius: 12px;
+  width: 472px;
+  height: 60px;
+  border: none;
+  cursor: pointer;
+  background: #f4c550;
+  font-family: var(--font-family);
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 156%;
+  color: #121417;
+}
+
+.btn:hover {
+  background: #ffdc86;
+}
+
+.error {
+  color: red;
+  font-size: 13px;
+  margin-top: 4px;
+  position: relative;
+}

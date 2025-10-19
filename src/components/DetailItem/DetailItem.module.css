@@ -1,0 +1,68 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.text {
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 150%;
+  color: #121417;
+}
+
+.reviewsContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.textContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.reviewName {
+  font-family: var(--font-family);
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 150%;
+  color: #8a8a89;
+}
+
+.textReating {
+  display: flex;
+  align-items: center;
+}
+
+.starSvg {
+  fill: #ffc531;
+  width: 16px;
+  height: 16px;
+  vertical-align: middle;
+}
+
+.reviewReating {
+  font-family: var(--font-family);
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 129%;
+  color: #121417;
+  margin-left: 8px;
+}
+
+.reviewComment {
+  font-family: var(--font-family);
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 150%;
+  color: #121417;
+}

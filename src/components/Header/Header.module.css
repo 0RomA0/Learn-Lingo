@@ -87,10 +87,7 @@
   cursor: pointer;
   display: flex;
   align-items: center;
-}
-
-.btnLogIn:focus {
-  outline: none; /* прибирає обводку */
+  outline: none;
 }
 
 .btnRegistration {
@@ -107,6 +104,7 @@
   color: #fff;
   border: none;
   cursor: pointer;
+  outline: none;
 }
 
 .btnRegistration:hover {

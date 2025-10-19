@@ -28,9 +28,11 @@ function App() {
     dispatch(refreshUser());
   }, [dispatch]);
 
-  return isRefreshing ? (
-    <p className={style.emptyText}> Refreshing user... </p>
-  ) : (
+  if (isRefreshing) {
+    return <p className={style.emptyText}>Refreshing...</p>;
+  }
+
+  return (
     <>
       <Suspense fallback={null}>
         <Routes>

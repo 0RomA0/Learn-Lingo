@@ -9,7 +9,7 @@ import { useSelector } from 'react-redux';
 import { selectIsLoggedIn, selectUser } from '../../redux/auth/selectors';
 
 export default function Header() {
-  const [openModalLogIn, setOpenModal] = useState(false);
+  const [openModalLogIn, setOpenModalLogIn] = useState(false);
   const [openModalRegistration, setOpenModalRegistration] = useState(false);
 
   const isLoggedIn = useSelector(selectIsLoggedIn);
@@ -20,7 +20,7 @@ export default function Header() {
   };
 
   const heandlerClickLogIn = () => {
-    setOpenModal(true);
+    setOpenModalLogIn(true);
   };
 
   const heandlerClickRegistration = () => {
@@ -28,7 +28,7 @@ export default function Header() {
   };
 
   const closeModal = () => {
-    setOpenModal(false);
+    setOpenModalLogIn(false);
     setOpenModalRegistration(false);
   };
 

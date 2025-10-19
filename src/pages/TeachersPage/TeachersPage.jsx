@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import style from './TeachersPage.module.css';
 import { fetchTeachers } from '../../redux/teachers/operations';
 import { useDispatch, useSelector } from 'react-redux';
@@ -12,8 +12,14 @@ import {
 } from '../../redux/teachers/selectors';
 import { selectIsLoggedIn } from '../../redux/auth/selectors';
 import toast from 'react-hot-toast';
+import DetailItem from '../../components/DetailItem/DetailItem';
+import BookinTrialForm from '../../components/BookTrialForm/BookTrialForm';
 
 export default function TeachersPage() {
+  const [expandedId, setExpandedId] = useState(null);
+  const [openModalBooking, setOpenModalBooking] = useState(false);
+  const [selectedTeacher, setSelectedTeacher] = useState(false);
+
   const teachers = useSelector(selectTeachers);
   const loading = useSelector(selectLoading);
   const lastKey = useSelector(selectLastKey);
@@ -31,8 +37,21 @@ export default function TeachersPage() {
   const handleLoadMore = () => {
     dispatch(fetchTeachers({ limit: 4, startAfterKey: lastKey }));
   };
+  const handleClickBooking = (teacher) => {
+    setSelectedTeacher(teacher);
+    setOpenModalBooking(true);
+  };
 
-  if (loading && teachers.length === 0) return <p>Loading teachers...</p>;
+  const closeModal = () => {
+    setOpenModalBooking(false);
+  };
+
+  const toggleExpand = (id) => {
+    setExpandedId((prevId) => (prevId === id ? null : id));
+  };
+
+  if (loading && teachers.length === 0)
+    return <p className={style.emptyText}>Loading teachers...</p>;
 
   return (
     <div className={style.container}>
@@ -59,54 +78,64 @@ export default function TeachersPage() {
                       {teacher.name} {teacher.surname}
                     </h2>
                   </div>
-                  <div className={style.infoText}>
-                    <div className={style.bookDiv}>
-                      <svg className={style.bookSvg}>
-                        <use href="/sprite.svg#icon-book-open" />
-                      </svg>
-                      <p className={style.onlineText}>Lessons online</p>
+                  <div className={style.contentContainer}>
+                    <div className={style.infoText}>
+                      <div className={style.bookDiv}>
+                        <svg className={style.bookSvg}>
+                          <use href="/sprite.svg#icon-book-open" />
+                        </svg>
+                        <p className={style.onlineText}>Lessons online</p>
+                      </div>
+                      <span className={style.divider}></span>
+
+                      <p className={style.textLesson}>
+                        Lessons done: {teacher.lessons_done}
+                      </p>
+                      <span className={style.divider}></span>
+                      <div className={style.textReating}>
+                        <svg className={style.starSvg}>
+                          <use href="/sprite.svg#icon-star" />
+                        </svg>
+
+                        <p className={style.textLesson}>
+                          Rating: {teacher.rating}
+                        </p>
+                      </div>
+                      <span className={style.divider}></span>
+                      <p className={style.textLesson}>
+                        Price / 1 hour:{' '}
+                        <span className={style.spanPrice}>
+                          {teacher.price_per_hour}$
+                        </span>
+                      </p>
                     </div>
-                    <span className={style.divider}></span>
 
-                    <p className={style.textLesson}>
-                      Lessons done: {teacher.lessons_done}
-                    </p>
-                    <span className={style.divider}></span>
-                    <p className={style.textLesson}>Rating: {teacher.rating}</p>
-                    <span className={style.divider}></span>
-                    <p className={style.textLesson}>
-                      Price / 1 hour:{' '}
-                      <span className={style.spanPrice}>
-                        {teacher.price_per_hour}$
-                      </span>
-                    </p>
+                    <button
+                      className={style.heartBtn}
+                      onClick={() => {
+                        if (!loggedIn) {
+                          toast(
+                            'This feature is available only for authorized users.',
+                            {
+                              icon: 'ℹ',
+                            },
+                          );
+                          return;
+                        }
+                        dispatch(toggleFavorite(teacher.id));
+                      }}
+                    >
+                      <svg className={style.svgHeart}>
+                        <use
+                          href={`/sprite.svg#${
+                            isFavorite && loggedIn
+                              ? 'icon-color-heart'
+                              : 'icon-heart'
+                          }`}
+                        />
+                      </svg>
+                    </button>
                   </div>
-
-                  <button
-                    className={style.heartBtn}
-                    onClick={() => {
-                      if (!loggedIn) {
-                        toast(
-                          'This feature is available only for authorized users.',
-                          {
-                            icon: 'ℹ',
-                          },
-                        );
-                        return;
-                      }
-                      dispatch(toggleFavorite(teacher.id));
-                    }}
-                  >
-                    <svg className={style.svgHeart}>
-                      <use
-                        href={`/sprite.svg#${
-                          isFavorite && loggedIn
-                            ? 'icon-color-heart'
-                            : 'icon-heart'
-                        }`}
-                      />
-                    </svg>
-                  </button>
                 </div>
 
                 <div className={style.details}>
@@ -125,11 +154,59 @@ export default function TeachersPage() {
                     <span>{teacher.conditions}</span>
                   </p>
                 </div>
+
+                <button
+                  className={style.btnReadMore}
+                  onClick={() => {
+                    if (!loggedIn) {
+                      toast(
+                        'This feature is available only for authorized users.',
+                        {
+                          icon: 'ℹ',
+                        },
+                      );
+                      return;
+                    }
+                    toggleExpand(teacher.id);
+                  }}
+                >
+                  Read more
+                </button>
+                {expandedId === teacher.id && (
+                  <DetailItem
+                    experience={teacher.experience}
+                    reviews={teacher.reviews}
+                  />
+                )}
+                <div className={style.levels}>
+                  {teacher.levels.map((level) => (
+                    <span key={level} className={style.level}>
+                      #{level}
+                    </span>
+                  ))}
+                </div>
+                {expandedId === teacher.id && (
+                  <button
+                    className={style.btnBooking}
+                    onClick={() => handleClickBooking(teacher)}
+                  >
+                    Book trial lesson
+                  </button>
+                )}
               </div>
             </li>
           );
         })}
       </ul>
+
+      {openModalBooking && selectedTeacher && (
+        <BookinTrialForm
+          onClose={closeModal}
+          photo={selectedTeacher.avatar_url}
+          name={selectedTeacher.name}
+          surname={selectedTeacher.surname}
+        />
+      )}
 
       {hasMore && !loading && (
         <button onClick={handleLoadMore} className={style.loadMoreBtn}>

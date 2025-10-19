@@ -1,19 +1,20 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import style from './FavoritesPage.module.css';
 import { fetchTeachers } from '../../redux/teachers/operations';
 import { useDispatch, useSelector } from 'react-redux';
 import { toggleFavorite } from '../../redux/favorites/slice';
 import { selectFavorites } from '../../redux/favorites/selectors';
-import {
-  selectLastKey,
-  selectLoading,
-  selectTeachers,
-} from '../../redux/teachers/selectors';
+import { selectLoading, selectTeachers } from '../../redux/teachers/selectors';
+import DetailItem from '../../components/DetailItem/DetailItem';
+import BookinTrialForm from '../../components/BookTrialForm/BookTrialForm';
 
 export default function FavoritesPage() {
+  const [expandedId, setExpandedId] = useState(null);
+  const [openModalBooking, setOpenModalBooking] = useState(false);
+  const [selectedTeacher, setSelectedTeacher] = useState(false);
+
   const teachers = useSelector(selectTeachers);
   const loading = useSelector(selectLoading);
-  const lastKey = useSelector(selectLastKey);
   const favorites = useSelector(selectFavorites);
 
   const dispatch = useDispatch();
@@ -24,22 +25,26 @@ export default function FavoritesPage() {
     }
   }, [teachers, dispatch]);
 
-  const handleLoadMore = () => {
-    dispatch(fetchTeachers({ limit: 4, startAfterKey: lastKey }));
+  const closeModal = () => {
+    setOpenModalBooking(false);
   };
 
-  if (loading && teachers.length === 0) return <p>Loading teachers...</p>;
+  const handleClickBooking = (teacher) => {
+    setSelectedTeacher(teacher);
+    setOpenModalBooking(true);
+  };
 
   const favoriteTeachers = teachers.filter((t) => favorites.includes(t.id));
 
-  const showLoadMore = favoriteTeachers.length < favorites.length && !loading;
+  if (loading)
+    return <p className={style.emptyText}>Loading favorite teachers...</p>;
 
-  if (favoriteTeachers.length === 0) {
+  if (!loading && favoriteTeachers.length === 0)
     return <p className={style.emptyText}>No favorite teachers yet 💔</p>;
-  }
 
-  if (loading && teachers.length === 0)
-    return <p>Loading favorites teachers...</p>;
+  const toggleExpand = (id) => {
+    setExpandedId((prevId) => (prevId === id ? null : id));
+  };
 
   return (
     <div className={style.container}>
@@ -66,41 +71,51 @@ export default function FavoritesPage() {
                       {teacher.name} {teacher.surname}
                     </h2>
                   </div>
-                  <div className={style.infoText}>
-                    <div className={style.bookDiv}>
-                      <svg className={style.bookSvg}>
-                        <use href="/sprite.svg#icon-book-open" />
-                      </svg>
-                      <p className={style.onlineText}>Lessons online</p>
+                  <div className={style.contentContainer}>
+                    <div className={style.infoText}>
+                      <div className={style.bookDiv}>
+                        <svg className={style.bookSvg}>
+                          <use href="/sprite.svg#icon-book-open" />
+                        </svg>
+                        <p className={style.onlineText}>Lessons online</p>
+                      </div>
+                      <span className={style.divider}></span>
+
+                      <p className={style.textLesson}>
+                        Lessons done: {teacher.lessons_done}
+                      </p>
+                      <span className={style.divider}></span>
+                      <div className={style.textReating}>
+                        <svg className={style.starSvg}>
+                          <use href="/sprite.svg#icon-star" />
+                        </svg>
+
+                        <p className={style.textLesson}>
+                          Rating: {teacher.rating}
+                        </p>
+                      </div>
+                      <span className={style.divider}></span>
+                      <p className={style.textLesson}>
+                        Price / 1 hour:{' '}
+                        <span className={style.spanPrice}>
+                          {teacher.price_per_hour}$
+                        </span>
+                      </p>
                     </div>
-                    <span className={style.divider}></span>
 
-                    <p className={style.textLesson}>
-                      Lessons done: {teacher.lessons_done}
-                    </p>
-                    <span className={style.divider}></span>
-                    <p className={style.textLesson}>Rating: {teacher.rating}</p>
-                    <span className={style.divider}></span>
-                    <p className={style.textLesson}>
-                      Price / 1 hour:{' '}
-                      <span className={style.spanPrice}>
-                        {teacher.price_per_hour}$
-                      </span>
-                    </p>
+                    <button
+                      className={style.heartBtn}
+                      onClick={() => dispatch(toggleFavorite(teacher.id))}
+                    >
+                      <svg className={style.svgHeart}>
+                        <use
+                          href={`/sprite.svg#${
+                            isFavorite ? 'icon-color-heart' : 'icon-heart'
+                          }`}
+                        />
+                      </svg>
+                    </button>
                   </div>
-
-                  <button
-                    className={style.heartBtn}
-                    onClick={() => dispatch(toggleFavorite(teacher.id))}
-                  >
-                    <svg className={style.svgHeart}>
-                      <use
-                        href={`/sprite.svg#${
-                          isFavorite ? 'icon-color-heart' : 'icon-heart'
-                        }`}
-                      />
-                    </svg>
-                  </button>
                 </div>
 
                 <div className={style.details}>
@@ -119,17 +134,55 @@ export default function FavoritesPage() {
                     <span>{teacher.conditions}</span>
                   </p>
                 </div>
+
+                <button
+                  className={style.btnReadMore}
+                  onClick={() => toggleExpand(teacher.id)}
+                >
+                  Read more
+                </button>
+                {expandedId === teacher.id && (
+                  <DetailItem
+                    experience={teacher.experience}
+                    reviews={teacher.reviews}
+                  />
+                )}
+                <div className={style.levels}>
+                  {teacher.levels.map((level) => (
+                    <span key={level} className={style.level}>
+                      #{level}
+                    </span>
+                  ))}
+                </div>
+
+                {expandedId === teacher.id && (
+                  <button
+                    className={style.btnBooking}
+                    onClick={() => handleClickBooking(teacher)}
+                  >
+                    Book trial lesson
+                  </button>
+                )}
               </div>
             </li>
           );
         })}
       </ul>
 
-      {showLoadMore && (
+      {openModalBooking && selectedTeacher && (
+        <BookinTrialForm
+          onClose={closeModal}
+          photo={selectedTeacher.avatar_url}
+          name={selectedTeacher.name}
+          surname={selectedTeacher.surname}
+        />
+      )}
+
+      {/* {showLoadMore && !loading && (
         <button onClick={handleLoadMore} className={style.loadMoreBtn}>
           Load more
         </button>
-      )}
+      )} */}
     </div>
   );
 }
