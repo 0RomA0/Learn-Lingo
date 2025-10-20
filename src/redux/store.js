@@ -2,6 +2,7 @@ import { configureStore } from '@reduxjs/toolkit';
 import AuthReducer from './auth/slice';
 import TeachersReducer from './teachers/slice';
 import FavoritesReducer from './favorites/slice';
+import FiltersReducer from './filters/slice';
 
 import {
   persistStore,
@@ -30,6 +31,7 @@ export const store = configureStore({
     teachers: TeachersReducer,
     auth: AuthReducer,
     favorites: persistedFavoritesReducer,
+    filters: FiltersReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({

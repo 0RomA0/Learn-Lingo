@@ -5,7 +5,12 @@ import * as Yup from 'yup';
 import style from './BookTrialForm.module.css';
 import toast from 'react-hot-toast';
 
-export default function BookinTrialForm({ onClose, photo, name, surname }) {
+export default function BookinTrialForm({
+  onClose,
+  teacherPhoto,
+  teacherName,
+  surname,
+}) {
   const [firebaseError, setFirebaseError] = useState('');
   const [loading, setLoading] = useState(false);
 
@@ -14,7 +19,10 @@ export default function BookinTrialForm({ onClose, photo, name, surname }) {
     fullName: Yup.string()
       .min(2, 'Full Name must be at least 2 characters')
       .max(50, 'Full Name must be at most 50 characters')
-      .matches(/^[A-Za-z\s]+$/, 'Full Name can contain only letters and spaces')
+      .matches(
+        /^[\p{L}\s'-]+$/u,
+        'Full Name can contain only letters and spaces',
+      )
       .required('Full Name is required'),
     email: Yup.string()
       .email('Invalid email format (e.g. username@mail.com)')
@@ -84,12 +92,12 @@ export default function BookinTrialForm({ onClose, photo, name, surname }) {
           </p>
 
           <div className={style.containerInfo}>
-            <img className={style.image} src={photo} alt={name} />
+            <img className={style.image} src={teacherPhoto} alt={teacherName} />
 
             <div className={style.divName}>
               <p className={style.textLang}> Your teacher </p>
               <h2 className={style.titleName}>
-                {name} {surname}
+                {teacherName} {surname}
               </h2>
             </div>
           </div>

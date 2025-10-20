@@ -19,7 +19,13 @@ const teachersSlice = createSlice({
     lastKey: null,
     hasMore: true,
   },
-  reducers: {},
+  reducers: {
+    clearTeachers: (state) => {
+      state.items = [];
+      state.lastKey = null;
+      state.hasMore = true;
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(fetchTeachers.pending, handlePending)
@@ -41,5 +47,7 @@ const teachersSlice = createSlice({
       });
   },
 });
+
+export const { clearTeachers } = teachersSlice.actions;
 
 export default teachersSlice.reducer;
