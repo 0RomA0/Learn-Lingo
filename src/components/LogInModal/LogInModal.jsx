@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as Yup from 'yup';
-import style from './LoginModal.module.css';
+import style from './LogInModal.module.css';
 import { logInUser } from '../../redux/auth/operations';
 import toast from 'react-hot-toast';
 import { useDispatch } from 'react-redux';
