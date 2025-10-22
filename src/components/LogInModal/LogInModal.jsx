@@ -55,6 +55,7 @@ export default function LoginModal({ onClose }) {
       reset();
       onClose();
     } catch (error) {
+      toast.error('Emeil or password is incorrect!');
       setFirebaseError(error.message);
     } finally {
       setLoading(false);

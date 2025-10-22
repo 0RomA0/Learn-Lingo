@@ -1,7 +1,6 @@
 import style from './TeachersList.module.css';
 import { fetchTeachers } from '../../redux/teachers/operations';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectFavorites } from '../../redux/favorites/selectors';
 import {
   selectHasMore,
   selectLastKey,
@@ -10,12 +9,12 @@ import {
 } from '../../redux/teachers/selectors';
 import TeacherInfo from '../TeacherInfo/TeacherInfo';
 import { selectFilters } from '../../redux/filters/selectors';
+import LoadMoreBtn from '../LoadMore/LoadMore';
 
-export default function TeachersList({ favoritesOnly }) {
+export default function TeachersList({ favoritesOnly, favorites = [] }) {
   const teachers = useSelector(selectTeachers);
   const isLoading = useSelector(selectLoading);
   const lastKey = useSelector(selectLastKey);
-  const favorites = useSelector(selectFavorites);
   const hasMore = useSelector(selectHasMore);
   const filters = useSelector(selectFilters);
   const dispatch = useDispatch();
@@ -25,10 +24,6 @@ export default function TeachersList({ favoritesOnly }) {
   };
 
   let filteredTeachers = teachers;
-
-  if (favoritesOnly) {
-    filteredTeachers = filteredTeachers.filter((t) => favorites.includes(t.id));
-  }
 
   if (filters.language) {
     filteredTeachers = filteredTeachers.filter((t) =>
@@ -48,6 +43,10 @@ export default function TeachersList({ favoritesOnly }) {
     );
   }
 
+  if (favoritesOnly) {
+    filteredTeachers = filteredTeachers.filter((t) => favorites.includes(t.id));
+  }
+
   if (!isLoading && filteredTeachers.length === 0) {
     return (
       <p className={style.emptyText}>
@@ -62,11 +61,9 @@ export default function TeachersList({ favoritesOnly }) {
     <div className={style.container}>
       <ul className={style.list}>
         {filteredTeachers.map((teacher) => {
-          const isFavorite = favorites.includes(teacher.id);
           return (
             <li className={style.item} key={teacher.id}>
               <TeacherInfo
-                teacher={teacher}
                 id={teacher.id}
                 teacherPhoto={teacher.avatar_url}
                 teacherName={teacher.name}
@@ -80,7 +77,7 @@ export default function TeachersList({ favoritesOnly }) {
                 experience={teacher.experience}
                 reviews={teacher.reviews}
                 levels={teacher.levels}
-                favorites={isFavorite}
+                favorites={favorites}
               />
             </li>
           );
@@ -94,9 +91,7 @@ export default function TeachersList({ favoritesOnly }) {
       )}
 
       {hasMore && !isLoading && !favoritesOnly && (
-        <button onClick={handleLoadMore} className={style.loadMoreBtn}>
-          Load more
-        </button>
+        <LoadMoreBtn onClick={handleLoadMore} disabled={isLoading} />
       )}
     </div>
   );

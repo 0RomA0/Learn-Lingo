@@ -3,7 +3,7 @@ import { toggleFavorite } from '../../redux/favorites/slice';
 import toast from 'react-hot-toast';
 import DetailItem from '../DetailItem/DetailItem';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectIsLoggedIn } from '../../redux/auth/selectors';
+import { selectIsLoggedIn, selectUser } from '../../redux/auth/selectors';
 import { useState } from 'react';
 import BookinTrialForm from '../BookTrialForm/BookTrialForm';
 import { selectFilters } from '../../redux/filters/selectors';
@@ -28,6 +28,8 @@ export default function TeacherInfo({
   const [openModalBooking, setOpenModalBooking] = useState(false);
   const [selectedTeacher, setSelectedTeacher] = useState(false);
   const loggedIn = useSelector(selectIsLoggedIn);
+  const loggedInUser = useSelector(selectUser);
+
   const dispatch = useDispatch();
   const filters = useSelector(selectFilters);
 
@@ -98,13 +100,19 @@ export default function TeacherInfo({
                   );
                   return;
                 }
-                dispatch(toggleFavorite(id));
+                if (loggedInUser?.uid) {
+                  dispatch(
+                    toggleFavorite({ uid: loggedInUser.uid, teacherId: id }),
+                  );
+                }
               }}
             >
               <svg className={style.svgHeart}>
                 <use
                   href={`/sprite.svg#${
-                    favorites && loggedIn ? 'icon-color-heart' : 'icon-heart'
+                    favorites?.includes(id) && loggedIn
+                      ? 'icon-color-heart'
+                      : 'icon-heart'
                   }`}
                 />
               </svg>

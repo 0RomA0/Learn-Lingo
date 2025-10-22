@@ -59,6 +59,7 @@ export default function RegistrationModal({ onClose }) {
       reset();
       onClose();
     } catch (error) {
+      toast.error('A user with this email address already exists!');
       setFirebaseError(error.message);
     } finally {
       setLoading(false);

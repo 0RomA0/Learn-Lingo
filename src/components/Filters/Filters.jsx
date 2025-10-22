@@ -48,7 +48,7 @@ export default function Filters() {
 
   const handleClear = () => {
     dispatch(resetFilters());
-    clearTeachers();
+    dispatch(clearTeachers());
     dispatch(fetchTeachers({ limit: 4 }));
   };
 
