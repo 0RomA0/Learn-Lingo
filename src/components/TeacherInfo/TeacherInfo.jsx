@@ -149,7 +149,7 @@ export default function TeacherInfo({
         >
           Read more
         </button>
-        {expandedId === id && (
+        {loggedIn && expandedId === id && (
           <DetailItem experience={experience} reviews={reviews} />
         )}
         <div className={style.levels}>
@@ -164,7 +164,7 @@ export default function TeacherInfo({
             </span>
           ))}
         </div>
-        {expandedId === id && (
+        {loggedIn && expandedId === id && (
           <button
             className={style.btnBooking}
             onClick={() =>

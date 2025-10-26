@@ -7,10 +7,12 @@ import RegistrationModal from '../RegistrationModal/RegistrationModal';
 import UserMenu from '../UserMenu/UserMenu';
 import { useSelector } from 'react-redux';
 import { selectIsLoggedIn, selectUser } from '../../redux/auth/selectors';
+import AuthMenu from '../AuthMenu/AuthMenu';
 
 export default function Header() {
   const [openModalLogIn, setOpenModalLogIn] = useState(false);
   const [openModalRegistration, setOpenModalRegistration] = useState(false);
+  const [openAuthMenu, setOpenAuthMenu] = useState(false);
 
   const isLoggedIn = useSelector(selectIsLoggedIn);
   const user = useSelector(selectUser);
@@ -79,11 +81,27 @@ export default function Header() {
                 </button>
               </>
             )}
+            {/* Бургер для SideMenu */}
+            <button
+              className={style.btnBburger}
+              onClick={() => setOpenAuthMenu(true)}
+            >
+              <svg className={style.iconBurger} width="32" height="32">
+                <use href="/sprite.svg#icon-Icon" />
+              </svg>
+            </button>
           </div>
         </div>
       </header>
       {openModalLogIn && <LoginModal onClose={closeModal} />}
       {openModalRegistration && <RegistrationModal onClose={closeModal} />}
+      <AuthMenu
+        isOpen={openAuthMenu}
+        onClose={() => setOpenAuthMenu(false)}
+        onLogin={heandlerClickLogIn}
+        onRegister={heandlerClickRegistration}
+        isLoggedIn={isLoggedIn}
+      />
       <Outlet />
     </>
   );

@@ -1,9 +1,4 @@
 .header {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 20px 64px 0;
-  max-width: 1440px;
 }
 
 .navContainer {
@@ -11,7 +6,21 @@
   align-items: center;
   justify-content: space-between;
   width: auto;
-  gap: 268px;
+  padding: 20px;
+}
+
+@media screen and (min-width: 768px) {
+}
+
+@media screen and (min-width: 1440px) {
+  .navContainer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: auto;
+    gap: 268px;
+    padding: 20px 64px 0;
+  }
 }
 
 .leftSlide {
@@ -39,7 +48,7 @@
 }
 
 .nav {
-  display: flex;
+  display: none;
   gap: 28px;
   font-family: var(--font-family);
   font-weight: 400;
@@ -75,6 +84,7 @@
 }
 
 .btnLogIn {
+  display: none;
   border: none;
   background-color: transparent;
   padding: 0;
@@ -85,12 +95,12 @@
   line-height: 125%;
   color: #121417;
   cursor: pointer;
-  display: flex;
   align-items: center;
   outline: none;
 }
 
 .btnRegistration {
+  display: none;
   border-radius: 12px;
   padding: 14px 39px;
   width: 166px;
@@ -109,4 +119,36 @@
 
 .btnRegistration:hover {
   background: #65696f;
+}
+
+.btnBburger {
+  display: block;
+  border: none;
+  background-color: transparent;
+}
+
+.iconBurger {
+  fill: none;
+  stroke: #101828;
+}
+
+@media screen and (min-width: 768px) {
+}
+
+@media screen and (min-width: 1440px) {
+  .btnBburger {
+    display: none;
+  }
+
+  .btnLogIn {
+    display: flex;
+  }
+
+  .btnRegistration {
+    display: block;
+  }
+
+  .nav {
+    display: flex;
+  }
 }

@@ -22,34 +22,25 @@ export default function HomePage() {
         </div>
 
         <div className={style.container}>
-          <svg className={style.imgFace} width="339" height="339">
-            <use href="../../../sticker.svg" />
-          </svg>
+          <img
+            className={style.imgFace}
+            srcSet="../../../sticker-1x.png, ../../../sticker-2x.png"
+            src="../../../sticker 2x.png"
+            alt="sticker"
+          />
 
-          <svg className={style.imgImac} width="359" height="247">
-            <use href="../../../iMac.svg" />
-          </svg>
+          <img
+            className={style.imgImac}
+            srcSet="../../../iMac-1x.png, ../../../iMac-2x.png"
+            src="../../../iMac-1x.png"
+            alt="iMac"
+          />
         </div>
 
         <div className={style.infoContainer}>
           {/* SVG рамка з рисками */}
-          <svg
-            className={style.borderSvg}
-            viewBox="0 0 1312 116"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <rect
-              x="1.5"
-              y="1.5"
-              width="1309"
-              height="113"
-              rx="30"
-              ry="30"
-              stroke="#f4c550"
-              strokeWidth="1"
-              strokeDasharray="20 10"
-            />
+          <svg className={style.borderSvg}>
+            <rect className={style.borderRect} />
           </svg>
 
           <div className={style.textInfo}>

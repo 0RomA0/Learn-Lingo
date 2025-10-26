@@ -6,12 +6,13 @@ import { useDispatch, useSelector } from 'react-redux';
 import TeachersList from '../../components/TeachersList/TeachersList';
 import Filters from '../../components/Filters/Filters';
 import { selectUser } from '../../redux/auth/selectors';
+import { selectFavoritesItems } from '../../redux/favorites/selectors';
 
 export default function TeachersPage() {
   const dispatch = useDispatch();
   const user = useSelector(selectUser);
-  const favorites = useSelector(
-    (state) => state.favorites.byUser[user?.uid]?.items || [],
+  const favorites = useSelector((state) =>
+    selectFavoritesItems(state, user?.uid),
   );
 
   useEffect(() => {
@@ -20,7 +21,7 @@ export default function TeachersPage() {
 
   return (
     <div className={style.container}>
-      <Filters />
+      {/* <Filters /> */}
       <TeachersList favorites={favorites} />
     </div>
   );

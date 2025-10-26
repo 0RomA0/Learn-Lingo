@@ -1,7 +1,18 @@
 .section {
-  max-width: 1440px;
-  height: 790px;
-  padding: 20px 64px;
+  max-width: 100%;
+  height: auto;
+  padding: 20px;
+}
+
+@media screen and (min-width: 768px) {
+}
+
+@media screen and (min-width: 1440px) {
+  .section {
+    max-width: 1440px;
+    height: 790px;
+    padding: 20px 64px;
+  }
 }
 
 .sectionContainer {
@@ -11,24 +22,54 @@
 }
 
 .textContainer {
-  border-radius: 30px;
-  width: 720px;
-  height: 530px;
-  padding: 98px 64px;
+  width: 100%;
+  height: auto;
+  padding: 30px 24px;
+  border-radius: 20px;
   background: #f8f8f8;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
+  text-align: center;
+}
+
+@media screen and (min-width: 768px) {
+  .textContainer {
+    border-radius: 30px;
+    width: 420px;
+    height: auto;
+    text-align: unset;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .textContainer {
+    border-radius: 30px;
+    width: 720px;
+    height: 530px;
+    padding: 98px 64px;
+    text-align: unset;
+  }
 }
 
 .article {
   font-family: var(--font-family);
   font-weight: 500;
-  font-size: 48px;
+  font-size: 24px;
   line-height: 117%;
   letter-spacing: -0.02em;
   color: #121417;
-  margin-bottom: 32px;
+  margin-bottom: 24px;
+}
+
+@media screen and (min-width: 768px) {
+}
+
+@media screen and (min-width: 1440px) {
+  .article {
+    font-size: 48px;
+    margin-bottom: 32px;
+  }
 }
 
 .text {
@@ -38,8 +79,22 @@
   line-height: 137%;
   letter-spacing: -0.02em;
   color: #121417;
-  margin-bottom: 64px;
+  margin-bottom: 32px;
   width: 471px;
+}
+
+@media screen and (min-width: 768px) {
+  .text {
+    margin-bottom: 64px;
+    width: 471px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .text {
+    margin-bottom: 64px;
+    width: 471px;
+  }
 }
 
 .span {
@@ -55,17 +110,31 @@
   content: '';
   position: absolute;
   bottom: 0;
-  left: -2%;
-  width: 195px;
-  height: 40px;
+  left: -4%;
+  width: 100px;
+  height: 20px;
   background: #fbe9ba;
   border-radius: 8px;
   z-index: -1;
 }
 
+@media screen and (min-width: 768px) {
+  .span::before {
+    left: -3%;
+    width: 100px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .span::before {
+    width: 195px;
+    height: 40px;
+  }
+}
+
 .btn {
   border-radius: 12px;
-  padding: 16px 88px;
+  padding: 16px 60px;
   width: 272px;
   height: 60px;
   background: #f4c550;
@@ -78,16 +147,26 @@
   border: none;
   cursor: pointer;
   text-decoration: none;
+  text-align: center;
 }
 
 .btn:hover {
   background: #ffdc86;
 }
 
+@media screen and (min-width: 768px) {
+}
+
+@media screen and (min-width: 1440px) {
+  .btn {
+    padding: 16px 88px;
+  }
+}
+
 .container {
-  border-radius: 30px;
-  width: 568px;
-  height: 530px;
+  width: 100%;
+  height: 300px;
+  border-radius: 20px;
   background-color: #fbe9ba;
   display: flex;
   flex-wrap: wrap;
@@ -96,19 +175,48 @@
   overflow: hidden;
 }
 
+@media screen and (min-width: 768px) {
+  .container {
+    width: 280px;
+    height: auto;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .container {
+    border-radius: 30px;
+    width: 568px;
+    height: 530px;
+  }
+}
+
 .imgFace {
-  width: 339px;
-  height: 339px;
+  width: 220px;
+  height: 220px;
   position: absolute;
-  top: 80px;
+  top: 0px;
   left: 50%;
   transform: translateX(-50%);
   z-index: 1;
 }
 
+@media screen and (min-width: 768px) {
+  .imgFace {
+    top: 50px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .imgFace {
+    width: 339px;
+    height: 339px;
+    top: 80px;
+  }
+}
+
 .imgImac {
-  width: 359px;
-  height: 176px;
+  width: 240px;
+  height: 120px;
   position: absolute;
   bottom: 0;
   left: 50%;
@@ -116,35 +224,107 @@
   z-index: 2;
 }
 
+@media screen and (min-width: 768px) {
+}
+
+@media screen and (min-width: 1440px) {
+  .imgImac {
+    width: 359px;
+    height: 176px;
+  }
+}
+
 .infoContainer {
   position: relative;
-  width: 1312px;
-  height: 116px;
-  padding: 40px 122px;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: space-between;
   background: #fff;
+  gap: 16px;
+  height: auto;
+  padding: 24px;
+  width: 100%;
   box-sizing: border-box;
   overflow: hidden;
 }
 
-/* SVG накриває весь контейнер */
+@media screen and (min-width: 768px) {
+  .infoContainer {
+    justify-content: space-between;
+    flex-direction: unset;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .infoContainer {
+    padding: 40px 122px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: unset;
+  }
+}
+
 .borderSvg {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  pointer-events: none;
+  fill: none;
+}
+
+.borderRect {
+  width: 100%;
+  height: 230px;
+  fill: none;
+  stroke: #f4c550;
+  stroke-width: 2;
+  stroke-dasharray: 6 4;
+  rx: 12;
+  ry: 12;
+}
+
+@media screen and (min-width: 768px) {
+  .borderRect {
+    height: 80px;
+    stroke-width: 2;
+    stroke-dasharray: 12 6;
+    rx: 18;
+    ry: 18;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .borderRect {
+    width: 1312px;
+    height: 116px;
+    stroke-width: 2;
+    stroke-dasharray: 20 10;
+    rx: 30;
+    ry: 30;
+  }
 }
 
 .textInfo {
   display: flex;
   align-items: center;
-  width: 217px;
+  justify-content: center;
+  width: auto;
   height: 36px;
   gap: 16px;
+}
+
+@media screen and (min-width: 768px) {
+  .textInfo {
+    gap: 10px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .textInfo {
+    gap: 16px;
+  }
 }
 
 .textNumber {
@@ -154,6 +334,18 @@
   line-height: 114%;
   letter-spacing: -0.02em;
   color: #121417;
+}
+
+@media screen and (min-width: 768px) {
+  .textNumber {
+    font-size: 18px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .textNumber {
+    font-size: 28px;
+  }
 }
 
 .textDescription {
