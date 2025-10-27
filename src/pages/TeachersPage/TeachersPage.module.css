@@ -6,3 +6,37 @@
   padding-top: 96px;
   min-height: 100vh;
 }
+
+.filersBtn {
+  display: block;
+  border: none;
+  background-color: transparent;
+  font-family: var(--font-family);
+  font-weight: 500;
+  font-size: 16px;
+  color: #121417;
+  cursor: pointer;
+  text-decoration: underline;
+  margin-right: 20px;
+  margin-left: auto;
+}
+
+.filersBtn:hover {
+  color: #f4c550;
+}
+
+@media screen and (min-width: 1440px) {
+  .filersBtn {
+    display: none;
+  }
+}
+
+.filtersDesktop {
+  display: none;
+}
+
+@media screen and (min-width: 1440px) {
+  .filtersDesktop {
+    display: block;
+  }
+}

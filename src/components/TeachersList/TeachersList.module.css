@@ -2,11 +2,6 @@
   padding: 0 20px;
 }
 
-@media screen and (min-width: 768px) {
-  .container {
-  }
-}
-
 @media screen and (min-width: 1440px) {
   .container {
     padding: 0 128px;
@@ -45,6 +40,10 @@
 }
 
 @media screen and (min-width: 768px) {
+  .item {
+    flex-direction: row;
+    align-items: stretch;
+  }
 }
 
 @media screen and (min-width: 1440px) {
@@ -54,8 +53,6 @@
     max-width: 1184px;
     height: auto;
     display: flex;
-    flex-direction: unset;
-    align-items: normal;
     gap: 0;
   }
 }

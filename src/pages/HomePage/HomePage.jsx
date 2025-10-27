@@ -25,7 +25,7 @@ export default function HomePage() {
           <img
             className={style.imgFace}
             srcSet="../../../sticker-1x.png, ../../../sticker-2x.png"
-            src="../../../sticker 2x.png"
+            src="../../../sticker 1x.png"
             alt="sticker"
           />
 

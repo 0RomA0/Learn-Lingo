@@ -10,16 +10,30 @@
 
 .modal {
   background: #fff;
-  border-radius: 30px;
-  width: 90%;
-  max-width: 599px;
-  max-height: 90vh;
+  width: 95%;
+  max-height: 95vh;
+  padding: 24px;
+  border-radius: 20px;
   overflow-y: auto;
   scrollbar-width: none;
   -ms-overflow-style: none;
-  padding: 64px;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
   position: relative;
+}
+
+@media screen and (min-width: 768px) {
+  .modal {
+    width: 500px;
+    padding: 40px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .modal {
+    border-radius: 30px;
+    width: 599px;
+    padding: 64px;
+  }
 }
 
 .modal::-webkit-scrollbar {
@@ -39,14 +53,16 @@
 
 .closeBtn {
   position: absolute;
-  top: 16px;
-  right: 16px;
+  top: 8px;
+  right: 8px;
   border: none;
   background: transparent;
   cursor: pointer;
 }
 
 .closeIcon {
+  width: 24px;
+  height: 24px;
   stroke: #121417;
   transition: stroke 0.3s;
 }
@@ -55,14 +71,32 @@
   stroke: #f4c550;
 }
 
+@media screen and (min-width: 768px) {
+  .closeBtn {
+    top: 16px;
+    right: 16px;
+  }
+
+  .closeIcon {
+    width: 32px;
+    height: 32px;
+  }
+}
+
 .title {
   font-family: var(--font-family);
   font-weight: 500;
-  font-size: 40px;
+  font-size: 24px;
   line-height: 120%;
   letter-spacing: -0.02em;
   color: #121417;
   margin-bottom: 20px;
+}
+
+@media screen and (min-width: 768px) {
+  .title {
+    font-size: 40px;
+  }
 }
 
 .description {
@@ -111,17 +145,23 @@
   display: flex;
   flex-direction: column;
   border-radius: 30px;
-  width: 472px;
+  width: 100%;
   height: auto;
 }
 
 .radioTitle {
   font-family: var(--font-family);
   font-weight: 500;
-  font-size: 24px;
+  font-size: 18px;
   line-height: 133%;
   color: #121417;
   margin-bottom: 20px;
+}
+
+@media screen and (min-width: 768px) {
+  .radioTitle {
+    font-size: 24px;
+  }
 }
 
 .radioGroup {
@@ -134,12 +174,18 @@
 .radioLabel {
   font-family: var(--font-family);
   font-weight: 400;
-  font-size: 16px;
+  font-size: 15px;
   line-height: 137%;
   text-align: center;
   color: #121417;
   display: flex;
   gap: 8px;
+}
+
+@media screen and (min-width: 768px) {
+  .radioLabel {
+    font-size: 16px;
+  }
 }
 
 .inputRadio {
@@ -193,7 +239,7 @@
   border: 1px solid rgba(18, 20, 23, 0.1);
   border-radius: 12px;
   padding: 16px 0 16px 18px;
-  width: 472px;
+  width: 100%;
   height: 54px;
   font-family: var(--font-family);
   font-weight: 400;
@@ -212,8 +258,8 @@
 .btn {
   margin-top: 40px;
   border-radius: 12px;
-  width: 472px;
-  height: 60px;
+  width: 100%;
+  height: 50px;
   border: none;
   cursor: pointer;
   background: #f4c550;
@@ -226,6 +272,12 @@
 
 .btn:hover {
   background: #ffdc86;
+}
+
+@media screen and (min-width: 1440px) {
+  .btn {
+    height: 60px;
+  }
 }
 
 .error {

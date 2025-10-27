@@ -87,7 +87,7 @@ export default function RegistrationModal({ onClose }) {
             <div className={style.inputGap}>
               <div className={style.inputContainer}>
                 <input
-                  className={style.inputEmail}
+                  className={style.inputName}
                   type="text"
                   {...register('name')}
                   placeholder="Name"

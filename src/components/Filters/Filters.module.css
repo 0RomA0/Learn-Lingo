@@ -2,11 +2,21 @@
   display: flex;
   align-items: flex-end;
   justify-content: flex-start;
+  flex-direction: column;
   gap: 10px;
-  padding-left: 128px;
+  margin-top: 32px;
 }
 
-.component {
+@media screen and (min-width: 1440px) {
+  .filterContainer {
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-start;
+    gap: 10px;
+    padding-left: 128px;
+    flex-direction: row;
+    margin-top: 0;
+  }
 }
 
 .icon {
@@ -41,7 +51,7 @@
   padding: 16px;
   width: 198px;
   height: 48px;
-  background: #fff;
+  background: #f6f6f6;
   font-family: var(--font-family);
   font-weight: 500;
   font-size: 18px;
@@ -51,6 +61,12 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+
+@media screen and (min-width: 1440px) {
+  .selectHeader {
+    background: #fff;
+  }
 }
 
 .selectList {

@@ -79,7 +79,7 @@ export default function BookinTrialForm({
       <div className={style.backdrop} onClick={onClose}>
         <div className={style.modal} onClick={(e) => e.stopPropagation()}>
           <button className={style.closeBtn} onClick={onClose}>
-            <svg className={style.closeIcon} width="32" height="32">
+            <svg className={style.closeIcon}>
               <use href="/sprite.svg#icon-close" />
             </svg>
           </button>
