@@ -40,7 +40,7 @@ export default function HomePage() {
         <div className={style.infoContainer}>
           {/* SVG рамка з рисками */}
           <svg className={style.borderSvg}>
-            <rect className={style.borderRect} />
+            <rect className={style.borderRect} x="0" y="0" rx="25" ry="25" />
           </svg>
 
           <div className={style.textInfo}>

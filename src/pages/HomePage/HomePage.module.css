@@ -281,8 +281,6 @@
   stroke: #f4c550;
   stroke-width: 2;
   stroke-dasharray: 6 4;
-  rx: 16;
-  ry: 16;
 }
 
 @media screen and (min-width: 768px) {
@@ -290,8 +288,6 @@
     height: 80px;
     stroke-width: 2;
     stroke-dasharray: 12 6;
-    rx: 18;
-    ry: 18;
   }
 }
 
@@ -301,8 +297,6 @@
     height: 116px;
     stroke-width: 2;
     stroke-dasharray: 20 10;
-    rx: 30;
-    ry: 30;
   }
 }
 
