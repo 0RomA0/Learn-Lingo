@@ -281,8 +281,8 @@
   stroke: #f4c550;
   stroke-width: 2;
   stroke-dasharray: 6 4;
-  rx: 12;
-  ry: 12;
+  rx: 16;
+  ry: 16;
 }
 
 @media screen and (min-width: 768px) {
