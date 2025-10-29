@@ -1,4 +1,4 @@
-# ** 🏫 Learn Lingo — Online Language Learning Platform **
+# **🏫 Learn Lingo — Online Language Learning Platform**
 
 Learn Lingo is a modern web application for a company that offers online language lessons with professional tutors.
 Users can browse teachers, filter them by language, student level, and hourly rate, add them to Favorites, and book trial lessons.
