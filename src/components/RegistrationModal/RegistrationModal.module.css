@@ -110,7 +110,7 @@
 .inputPassword {
   border: 1px solid rgba(18, 20, 23, 0.1);
   border-radius: 12px;
-  padding: 16px 0 16px 18px;
+  padding: 16px 50px 16px 18px;
   width: 100%;
   height: 54px;
   font-family: var(--font-family);
@@ -118,6 +118,14 @@
   font-size: 16px;
   line-height: 137%;
   color: #121417;
+}
+
+@media screen and (min-width: 1440px) {
+  .inputName,
+  .inputEmail,
+  .inputPassword {
+    padding: 16px 160px 16px 18px;
+  }
 }
 
 .inputName:focus,
