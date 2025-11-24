@@ -85,7 +85,7 @@ The app uses Firebase Realtime Database:
 6. Save favorite teachers per user.
 7. Ensure full responsive design.
 8. Use React Router for navigation.
-9. Deploy the app on Netlify or GitHub Pages.
+9. Deploy the app on Vercel.
 
 🙂 Developer
 Roman Halukh | Fullstack Developer
